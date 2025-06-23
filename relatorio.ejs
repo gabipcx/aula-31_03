@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Relatório de Dados</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">Relatório de Clientes</h1>
+    <!-- botao inicial -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Relatorio Data de Nascimento
+</button>
+
+<!-- o modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Insira sua data de nascimento</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Data de inicio</h5>
+        <input type="date" name="data_inicial">
+        <h5>Data de final</h5>
+        <input type="date" name="data_final">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark">Gerar PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>NOME</th>
+          <th>E-MAIL</th>
+          <th>DT NASC.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(dado => { %>
+          <tr>
+            <td><%= dado.id %></td>
+            <td><%= dado.name %></td>
+            <td><%= dado.email %></td>
+            <td><%= dado.DTNASC %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <div class="text-right mt-4">
+      <p class="text-muted">Página 1 de 1</p>
+      <p class="text-muted">Gerado em: <%= new Date().toLocaleDateString() %></p>
+    </div>
+  </div>
+  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</html>
